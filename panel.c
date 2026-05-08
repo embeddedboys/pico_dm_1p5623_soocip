@@ -87,7 +87,7 @@ struct panel_priv {
 
 #define ARRAY_SIZE(arr)		(sizeof(arr) / sizeof(arr[0]))
 #define dm_gpio_set_value(p, v) gpio_put(p, v)
-#define mdelay(v)		sleep_ms(v)
+#define mdelay(v)		sleep_us(v)
 
 extern int i80_pio_init(uint8_t db_base, uint8_t db_count, uint8_t pin_wr);
 extern int i80_write_buf_rs(void *buf, size_t len, bool rs);
@@ -374,6 +374,7 @@ static int panel_hw_init(struct panel_priv *priv)
 	panel_gpio_init(priv);
 
 	priv->tftops->init_display(priv);
+	pr_debug("%s, set dir", __func__);
 	priv->tftops->set_dir(priv, priv->display->rotate);
 	/* clear screen to black */
 	// priv->tftops->clear(priv, 0x0);

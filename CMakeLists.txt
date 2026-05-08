@@ -31,7 +31,7 @@ include(pico_sdk_import.cmake)
 include(pico_extras_import_optional.cmake)
 
 # set the project name
-project(pico_dm_1p5623_template C CXX ASM)
+project(pico_dm_1p5623_soocip C CXX ASM)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
@@ -179,6 +179,8 @@ file(GLOB_RECURSE COMMON_SOURCES
     main.c
     panel.c
     backlight.c
+    systick.c
+    handler.S
 )
 
 # rest of your project
